@@ -3,21 +3,24 @@ defmodule Amnesia.Mixfile do
 
   def project do
     [ app: :amnesia,
-      version: "0.1.1",
-      elixir: "~> 0.12.4",
-      deps: deps ]
+      version: "0.2.0",
+      elixir: "~> 1.0.0-rc1",
+      deps: deps,
+      package: package,
+      description: "mnesia wrapper for Elixir" ]
   end
 
-  # Configuration for the OTP application
+  defp package do
+    [ contributors: ["meh"],
+      licenses: ["WTFPL"],
+      links: %{"GitHub" => "https://github.com/meh/amnesia"} ]
+  end
+
   def application do
-    [ applications: [:mnesia] ]
+    [ applications: [:mnesia, :logger] ]
   end
 
-  # Returns the list of dependencies in the format:
-  # { :foobar, "0.1", git: "https://github.com/elixir-lang/foobar.git" }
   defp deps do
-    [ { :datastructures, github: "meh/elixir-datastructures" },
-      { :exquisite, github: "meh/exquisite" },
-      { :continuum, github: "meh/continuum" } ]
+    [ { :exquisite, "~> 0.1.4" } ]
   end
 end
